@@ -14,36 +14,70 @@ $records = $data['results'] ?? $data['records'] ?? [];
   <title>Student Nationality Data</title>
   <!-- Pico CSS from CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picocss@1.4.0/pico.min.css">
+  <style>
+    .overflow-auto {
+    max-width: 100%;
+    overflow-x: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 20px 0;
+    }
+    
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    }
+
+    thead tr {
+      background-color: #f4f4f4;
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      border-bottom: 2px solid #ddd;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+</style>
 </head>
 <body>
 
 <h1>University of Bahrain Student Nationality Data</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Year</th>
-      <th>Semester</th>
-      <th>Program</th>
-      <th>Nationality</th>
-      <th>College</th>
-      <th>Number of Students</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach ($records as $record): ?>
+<div class="overflow-auto">
+  <table>
+    <thead>
       <tr>
-      <td><?= $record['year'] ?? '' ?></td>
-        <td><?= $record['semester'] ?? '' ?></td>
-        <td><?= $record['the_programs'] ?? '' ?></td>
-        <td><?= $record['nationality'] ?? '' ?></td>
-        <td><?= $record['colleges'] ?? '' ?></td>
-        <td><?= $record['students_count'] ?? '0' ?></td>
+        <th>Year</th>
+        <th>Semester</th>
+        <th>Program</th>
+        <th>Nationality</th>
+        <th>College</th>
+        <th>Number of Students</th>
       </tr>
-    <?php endforeach; ?>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <?php foreach ($records as $record): ?>
+        <tr>
+        <td><?= $record['year'] ?? '' ?></td>
+          <td><?= $record['semester'] ?? '' ?></td>
+          <td><?= $record['the_programs'] ?? '' ?></td>
+          <td><?= $record['nationality'] ?? '' ?></td>
+          <td><?= $record['colleges'] ?? '' ?></td>
+          <td><?= $record['students_count'] ?? '0' ?></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+</div>
 
 </body>
 </html>
-
