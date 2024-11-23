@@ -3,6 +3,7 @@
 $URL = 'https://data.gov.bh/api/explore/v2.1/catalog/datasets/01-statistics-of-students-nationalities_updated/records?where=colleges%20like%20%22IT%22%20AND%20the_programs%20like%20%22bachelor%22&limit=100';
 $response = file_get_contents($URL);
 $data = json_decode($response, true);
+$records = $data['results'] ?? $data['records'] ?? [];
 ?>
 
 <!DOCTYPE html>
@@ -30,14 +31,14 @@ $data = json_decode($response, true);
     </tr>
   </thead>
   <tbody>
-    <?php foreach ($data['records'] as $record): ?>
+    <?php foreach ($records as $record): ?>
       <tr>
-        <td><?php echo $record['fields']['year']; ?></td>
-        <td><?php echo $record['fields']['semester']; ?></td>
-        <td><?php echo $record['fields']['the_programs']; ?></td>
-        <td><?php echo $record['fields']['nationality']; ?></td>
-        <td><?php echo $record['fields']['colleges']; ?></td>
-        <td><?php echo $record['fields']['students_count']; ?></td>
+      <td><?= $record['year'] ?? '' ?></td>
+        <td><?= $record['semester'] ?? '' ?></td>
+        <td><?= $record['the_programs'] ?? '' ?></td>
+        <td><?= $record['nationality'] ?? '' ?></td>
+        <td><?= $record['colleges'] ?? '' ?></td>
+        <td><?= $record['students_count'] ?? '0' ?></td>
       </tr>
     <?php endforeach; ?>
   </tbody>
