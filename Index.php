@@ -72,7 +72,7 @@ $records = $data['results'] ?? $data['records'] ?? [];
           <td><?= $record['the_programs'] ?? '' ?></td>
           <td><?= $record['nationality'] ?? '' ?></td>
           <td><?= $record['colleges'] ?? '' ?></td>
-          <td><?= $record['students_count'] ?? '0' ?></td>
+          <td><?= $record['number_of_students'] ?? '0' ?></td>
         </tr>
       <?php endforeach; ?>
     </tbody>
